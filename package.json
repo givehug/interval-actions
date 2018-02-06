@@ -1,0 +1,32 @@
+{
+  "name": "interval-actions",
+  "version": "1.0.0",
+  "author": "Vladimir Boretskyi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/givehug/interval-actions.git"
+  },
+  "description": "create actions queue/stack, actions will be executed with minimum interval in between",
+  "keywords": [
+    "queue",
+    "stack",
+    "async",
+    "interval",
+    "job",
+    "task"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --full-trace",
+    "es5": "babel index.js --presets babel-preset-es2015 --out-dir es5",
+	"prepublish": "npm run es5",
+	"lint": "eslint index.js"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^4.17.0",
+    "mocha": "^5.0.0"
+  }
+}
