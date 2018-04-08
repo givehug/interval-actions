@@ -3,7 +3,7 @@
 
 ##### Create actions queue/stack. Added actions are executed with minimum interval in between.
 
-This may be useful when dealing with frequent async events, and you want be ensure that certain amount of time has passed since last event was processed.
+This may be useful when dealing with frequent async events, and you want be sure they are processed with certain interval.
 
 
 ## Install

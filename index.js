@@ -58,8 +58,8 @@ class IntervalActions {
 
 	add(func) {
 		this._props.list.push(func);
-		this._props.ops.executeOnAdd&& this._execute(
-			this._props.ops.delayFirstAction? this._props.interval : 0
+		this._props.ops.executeOnAdd && this._execute(
+			this._props.ops.delayFirstAction ? this._props.interval : 0
 		);
 	}
 
