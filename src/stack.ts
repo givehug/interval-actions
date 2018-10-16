@@ -1,27 +1,32 @@
-const Node = require('./node');
+import Node, {NodeType} from './node';
 
-class Queue {
+class Stack {
+    first?: NodeType;
+    last?: NodeType;
+    size: number;
+
     constructor() {
         this.first = null;
         this.last = null;
 		this.size = 0;
-		this.enqueue = this.enqueue.bind(this);
-		this.dequeue = this.dequeue.bind(this);
+		this.push = this.push.bind(this);
+		this.pop = this.pop.bind(this);
 	}
 	
-    enqueue(val) {
+    push(val: NodeType) {
         const newNode = new Node(val);
         if (!this.first) {
             this.first = newNode;
             this.last = newNode;
         } else {
-            this.last.next = newNode;
-            this.last = newNode;
+            const temp = this.first;
+            this.first = newNode;
+            this.first.next = temp;
         }
         return ++this.size;
 	}
-	
-    dequeue() {
+
+    pop(): NodeType | null {
         if (!this.first) return null;
         const temp = this.first;
         if (this.first === this.last) {
@@ -33,4 +38,4 @@ class Queue {
     }
 }
 
-module.exports = Queue;
+export default Stack;

@@ -1,5 +1,5 @@
 const assert = require('assert');
-const intervalActions = require('../index');
+const {makeQueue, makeStack} = require('../index.js');
 
 const arr = Array.from(Array(5), (_, i) => i);
 const arrLen = arr.length;
@@ -8,7 +8,7 @@ describe('Test interval actions', function () {
 
 	it('should create async actions queue and execute with 200ms interval', function(done) {
 		const interval = 100;
-		const queue = intervalActions.makeQueue(interval, {whenEmpty});
+		const queue = makeQueue(interval, {whenEmpty});
 		const timeStamp = Date.now();
 
 		function whenEmpty() {
@@ -31,7 +31,7 @@ describe('Test interval actions', function () {
 
 	it('should create async actions stack and execute with 200ms interval', function(done) {
 		const interval = 100;
-		const stack = intervalActions.makeStack(interval, {whenEmpty});
+		const stack = makeStack(interval, {whenEmpty});
 		const timeStamp = Date.now();
 
 		function whenEmpty() {
@@ -53,8 +53,8 @@ describe('Test interval actions', function () {
 	});
 
 	it('should clear queue and stack before execution', function() {
-		const queue = intervalActions.makeQueue();
-		const stack = intervalActions.makeStack();
+		const queue = makeQueue();
+		const stack = makeStack();
 
 		arr.forEach(() => {
 			queue.add(() => assert.ok(false, 'Should not be executed'));
@@ -69,7 +69,7 @@ describe('Test interval actions', function () {
 	});
 
 	it('should pause actions queue', function(done) {
-		const queue = intervalActions.makeQueue(0, {whenEmpty});
+		const queue = makeQueue(0, {whenEmpty});
 		const stopAt = 2;
 
 		function whenEmpty() {
@@ -101,7 +101,7 @@ describe('Test interval actions', function () {
 	});
 
 	it('should pause actions stack', function(done) {
-		const stack = intervalActions.makeStack(0, {whenEmpty});
+		const stack = makeStack(0, {whenEmpty});
 		const stopAt = 2;
 
 		function whenEmpty() {
@@ -127,7 +127,7 @@ describe('Test interval actions', function () {
 
 	it('should delay first queue action', function(done) {
 		const interval = 100;
-		const queue = intervalActions.makeQueue(interval, {delayFirstAction: true});
+		const queue = makeQueue(interval, {delayFirstAction: true});
 		const timeStamp = Date.now();
 
 		queue.add(() => {
@@ -137,7 +137,7 @@ describe('Test interval actions', function () {
 	});
 
 	it('should not execute on add', function(done) {
-		const queue = intervalActions.makeQueue(0, {executeOnAdd: false, whenEmpty});
+		const queue = makeQueue(0, {executeOnAdd: false, whenEmpty});
 
 		function whenEmpty() {
 			assert.equal(queue.length, 0, 'queue final length');
