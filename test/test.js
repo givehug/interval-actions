@@ -1,7 +1,7 @@
 const assert = require('assert');
 const intervalActions = require('../index');
 
-const arr = [0, 1, 2, 3, 4];
+const arr = Array.from(Array(5), (_, i) => i);
 const arrLen = arr.length;
 
 describe('Test interval actions', function () {
