@@ -18,7 +18,7 @@ $ npm install --save interval-actions
 Immediate execution:
 
 ```bash
-import intervalActions from 'interval-actions';
+const intervalActions = require('interval-actions');
 
 const queue = intervalActions.makeQueue(500);
 const timeStamp = Date.now();
@@ -38,7 +38,7 @@ const timeStamp = Date.now();
 Delayed execution:
 
 ```bash
-import intervalActions from 'interval-actions';
+import * as intervalActions from 'interval-actions';
  
 const stack = intervalActions.makeStack(500, {
 	executeOnAdd: false,
