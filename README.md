@@ -62,12 +62,6 @@ stack.execute();
 // 'Stack is empty, size: 0'
 ```
 
-es5 version:
-
-```bash
-var intervalActions = require('interval-actions/es5)';
-```
-
 
 ## Api
 
@@ -92,7 +86,7 @@ var intervalActions = require('interval-actions/es5)';
 | property   | type    |
 |------------|---------|
 | `isPaused` | boolean |
-| `length`   | number  |
+| `size | length`   | number  |
 
 
 ## Instance methods
