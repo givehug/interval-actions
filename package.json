@@ -9,10 +9,8 @@
   },
   "description": "Enqueue functions and invoke with provided interval",
   "keywords": [
-    "queue",
-    "stack",
-    "async",
     "interval",
+    "queue",
     "job",
     "task"
   ],
@@ -20,11 +18,14 @@
   "scripts": {
     "test": "mocha",
     "build": "tsc",
-    "prepublish": "npm run build"
+    "prepublish": "rimraf dist && npm run build"
   },
   "devDependencies": {
+    "@types/mocha": "5.2.5",
     "@types/node": "10.1.4",
     "mocha": "5.2.0",
+    "rimraf": "^2.6.2",
+    "ts-node": "7.0.1",
     "tslint": "5.11.0",
     "typescript": "3.1.3"
   }
