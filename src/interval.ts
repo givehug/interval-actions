@@ -1,10 +1,6 @@
 import Queue from './queue';
 
 export const interval = (fn: Function, time: number = 0) => {
-	if (typeof fn !== 'function') {
-		throw new Error('.interval() expects Function as first argument');
-	}
-
 	const queue = new Queue<Function>();
 	let timestamp: number = 0;
 	let waiting: boolean = false;

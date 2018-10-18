@@ -25,8 +25,4 @@ describe('Test interval', () => {
 
 		arr.forEach(action);
 	});
-
-	it('should throw error on invalid input', () => {
-		assert.throws(() => interval(null));
-	});
 });
