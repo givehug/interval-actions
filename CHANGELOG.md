@@ -1,4 +1,4 @@
-3.0.0 / TODO
+3.0.0 / 2018-10-19
 ------------------
 
 - **BREAKING:** makeQueue and makeStack deprecated, module now exports only method `interval`, see usage example in README
