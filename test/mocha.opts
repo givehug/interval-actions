@@ -1,0 +1,4 @@
+--no-timeouts
+--exit
+--require ts-node/register
+./test/test.ts

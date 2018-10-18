@@ -1,31 +1,31 @@
 {
   "name": "interval-actions",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "author": "Vladimir Boretskyi",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/givehug/interval-actions.git"
   },
-  "description": "create actions queue/stack, actions will be executed with minimum interval in between",
+  "description": "Enqueue functions and invoke with provided interval",
   "keywords": [
-    "queue",
-    "stack",
-    "async",
     "interval",
+    "queue",
     "job",
     "task"
   ],
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "build": "tsc",
+    "build": "rimraf dist && tsc",
     "prepublish": "npm run build"
   },
   "devDependencies": {
-    "@types/node": "^10.1.4",
-    "mocha": "^5.2.0",
-    "tslint": "^5.11.0",
-    "typescript": "^3.1.3"
+    "@types/mocha": "5.2.5",
+    "@types/node": "10.1.4",
+    "mocha": "5.2.0",
+    "rimraf": "2.6.2",
+    "ts-node": "7.0.1",
+    "typescript": "3.1.3"
   }
 }
