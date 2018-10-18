@@ -1,3 +1,1 @@
-const intervalActions = require('./dist/index');
-
-module.exports = intervalActions;
+module.exports = require('./dist/interval');

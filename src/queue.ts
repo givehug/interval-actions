@@ -1,8 +1,8 @@
 import Node, {NodeType} from './node';
 
-class Queue {
-    first?: NodeType;
-    last?: NodeType;
+class Queue<T> {
+    first?: NodeType<T>;
+    last?: NodeType<T>;
     size: number;
 
     constructor() {
@@ -13,7 +13,7 @@ class Queue {
 		this.dequeue = this.dequeue.bind(this);
 	}
 	
-    enqueue(val: NodeType) {
+    enqueue(val: T) {
         const newNode = new Node(val);
         if (!this.first) {
             this.first = newNode;
@@ -25,7 +25,7 @@ class Queue {
         return ++this.size;
 	}
 	
-    dequeue(): NodeType | null {
+    dequeue(): T | null {
         if (!this.first) return null;
         const temp = this.first;
         if (this.first === this.last) {

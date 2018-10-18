@@ -1,99 +1,35 @@
 
-# interval-actions
+# interval
 
-##### Create actions queue/stack. Added actions are executed with minimum interval in between.
-
-This may be useful when dealing with frequent async events, and you want be sure they are processed with certain interval.
-
+Similar to debounce/throttle, but callbacks will be added to queue and called with provided interval. First callback call is invoked immediately. Note, last callback call wont cause timeout and prevent process from exiting immediately.
 
 ## Install
 
 ```bash
-$ npm install --save interval-actions
+$ npm i --save interval-actions
 ```
-
 
 ## Usage
 
-Immediate execution:
-
 ```bash
-const intervalActions = require('interval-actions');
+const {interval} = require('./dist/interval');
 
-const queue = intervalActions.makeQueue(500);
-const timeStamp = Date.now();
+const logWithInterval = interval(console.timeLog, 1000);
 
-[0, 1, 2].forEach(i => {
-	queue.add(() => {
-		console.log(i + ' executed in ' + (Date.now() - timeStamp) + 'ms');
-	});
+console.time('time');
+
+logWithInterval('time'); // time: 0.405ms
+logWithInterval('time'); // time: 1005.094ms
+logWithInterval('time'); // time: 2006.982ms
+
+process.on('exit', () => {
+	console.timeEnd('time'); // time: 2007.645ms
 });
-
-// Result:
-// '0 executed in 1ms'
-// '1 executed in 509ms'
-// '2 executed in 1012ms'
 ```
-
-Delayed execution:
-
-```bash
-import * as intervalActions from 'interval-actions';
- 
-const stack = intervalActions.makeStack(500, {
-	executeOnAdd: false,
-	whenEmpty: () => console.log('Stack is empty, size: ' + stack.length),
-});
-
-const timeStamp = Date.now();
-
-[0, 1, 2].forEach(i => {
-	stack.add(() => {
-		console.log(i + ' executed in ' + (Date.now() - timeStamp) + 'ms');
-	});
-});
-
-stack.execute();
-
-// Result:
-// '2 executed in 2ms'
-// '1 executed in 508ms'
-// '0 executed in 1013ms'
-// 'Stack is empty, size: 0'
-```
-
 
 ## Api
 
-#### `intervalActions.makeQueue(interval, options)`
-
-#### `intervalActions.makeStack(interval, options)`
-
 | param      | type    | description                                             |
 |------------|---------|---------------------------------------------------------|
-| `interval` | number  | Minimum interval between functions execution. Optional. |
-| `options`  | Object  | Default options overrides. Optional.                    |
-
-| option             | type      | default | description                                                                                      |
-|--------------------|-----------|---------|--------------------------------------------------------------------------------------------------|
-| `executeOnAdd`     | boolean   | true    | when new actions are added, they are executed immediately                                        |
-| `delayFirstAction` | boolean   | false   | first action is executed without delay                                                           |
-| `whenEmpty`        | ?Function | null    | callback function, executed when queue or stack becomes empty (is not triggered by clear() call) |
-
-
-## Instance properties
-
-| property   | type    |
-|------------|---------|
-| `isPaused` | boolean |
-| `size | length`   | number  |
-
-
-## Instance methods
-
-| method    | description                                                  |
-|-----------|--------------------------------------------------------------|
-| `add`     | add new action to queue or stack                             |
-| `pause`   | pause execution                                              |
-| `execute` | execute actions / also resumes execution after it was paused |
-| `clear`   | clear queue or stack                                         |
+| `fn` | Function  | callback function |
+| `time`  | number  | interval duration in ms |

@@ -1,13 +1,13 @@
-export type NodeType = {
-    next?: NodeType,
+export type NodeType<T> = {
+    next?: NodeType<T>,
     value: any,
 };
 
-class Node {
-    public next?: NodeType = null;
+class Node<T> {
+    public next?: NodeType<T> = null;
     public value: any;
 
-    constructor(value: any) {
+    constructor(value: T) {
         this.value = value;
     }
 }
