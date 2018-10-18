@@ -12,7 +12,7 @@ $ npm i --save interval-actions
 ## Usage
 
 ```bash
-const {interval} = require('./dist/interval');
+const {interval} = require('interval-actions');
 
 const logWithInterval = interval(console.timeLog, 1000);
 
