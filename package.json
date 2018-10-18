@@ -17,8 +17,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "build": "tsc",
-    "prepublish": "rimraf dist && npm run build"
+    "build": "rimraf dist && tsc",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "@types/mocha": "5.2.5",

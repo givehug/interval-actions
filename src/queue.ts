@@ -1,19 +1,11 @@
-import Node, {NodeType} from './node';
+import Node from './node';
 
 class Queue<T> {
-    first?: NodeType<T>;
-    last?: NodeType<T>;
-    size: number;
-
-    constructor() {
-        this.first = null;
-        this.last = null;
-		this.size = 0;
-		this.enqueue = this.enqueue.bind(this);
-		this.dequeue = this.dequeue.bind(this);
-	}
+    first?: Node<T> = null;
+    last?: Node<T> = null;
+    size: number = 0;
 	
-    enqueue(val: T) {
+    enqueue = (val: T): void => {
         const newNode = new Node(val);
         if (!this.first) {
             this.first = newNode;
@@ -22,10 +14,10 @@ class Queue<T> {
             this.last.next = newNode;
             this.last = newNode;
         }
-        return ++this.size;
-	}
+        this.size++;
+	};
 	
-    dequeue(): T | null {
+    dequeue = (): T | null => {
         if (!this.first) return null;
         const temp = this.first;
         if (this.first === this.last) {
@@ -34,7 +26,7 @@ class Queue<T> {
         this.first = this.first.next;
         this.size--;
         return temp.value;
-    }
+    };
 }
 
 export default Queue;

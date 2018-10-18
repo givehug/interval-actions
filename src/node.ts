@@ -1,11 +1,6 @@
-export type NodeType<T> = {
-    next?: NodeType<T>,
-    value: any,
-};
-
 class Node<T> {
-    public next?: NodeType<T> = null;
-    public value: any;
+    next?: Node<T> = null;
+    value: T;
 
     constructor(value: T) {
         this.value = value;
