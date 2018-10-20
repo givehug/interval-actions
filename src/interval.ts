@@ -1,9 +1,9 @@
 import Queue from './queue';
 
-export const interval = (fn: Function, time: number = 0) => {
+export const interval = (fn: Function, time = 0) => {
 	const queue = new Queue<Function>();
-	let timestamp: number = 0;
-	let waiting: boolean = false;
+	let timestamp = 0;
+	let waiting = false;
 
 	const checkAndWait = () => {
 		if (!queue.size) return;

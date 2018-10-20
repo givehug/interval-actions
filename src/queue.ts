@@ -1,9 +1,13 @@
 import Node from './node';
 
-class Queue<T> {
-    first?: Node<T> = null;
-    last?: Node<T> = null;
-    size: number = 0;
+export default class Queue<T> {
+    private first?: Node<T> = null;
+    private last?: Node<T> = null;
+    private _size: number = 0;
+
+    get size() {
+        return this._size;
+    }
 	
     enqueue = (val: T): void => {
         const newNode = new Node(val);
@@ -14,9 +18,9 @@ class Queue<T> {
             this.last.next = newNode;
             this.last = newNode;
         }
-        this.size++;
+        this._size++;
 	};
-	
+
     dequeue = (): T | null => {
         if (!this.first) return null;
         const temp = this.first;
@@ -24,9 +28,7 @@ class Queue<T> {
             this.last = null;
         }
         this.first = this.first.next;
-        this.size--;
+        this._size--;
         return temp.value;
     };
 }
-
-export default Queue;

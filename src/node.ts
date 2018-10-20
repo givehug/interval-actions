@@ -1,10 +1,5 @@
-class Node<T> {
+export default class Node<T> {
     next?: Node<T> = null;
-    value: T;
 
-    constructor(value: T) {
-        this.value = value;
-    }
+    constructor(public value: T) {}
 }
-
-export default Node;
