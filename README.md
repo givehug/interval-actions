@@ -1,5 +1,4 @@
-
-# interval
+[![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://circleci.com/gh/givehug/interval-actions)
 
 Similar to debounce/throttle, but callbacks will be added to queue and called with provided interval. First callback call is invoked immediately. Note, last callback call wont cause timeout and prevent process from exiting immediately.
 
@@ -29,7 +28,7 @@ process.on('exit', () => {
 
 ## Api
 
-| param      | type    | description                                             |
-|------------|---------|---------------------------------------------------------|
-| `fn` | Function  | callback function |
-| `time`  | number  | interval duration in ms |
+| param  | type     | description             |
+| ------ | -------- | ----------------------- |
+| `fn`   | Function | callback function       |
+| `time` | number   | interval duration in ms |
